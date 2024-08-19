@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Titillium";
+  src: url(.././fonts/TitilliumWeb-Regular.ttf);
+}
+@font-face {
+  font-family: "Titillium Medium";
+  src: url(.././fonts/TitilliumWeb-SemiBold.ttf);
+}
+@font-face {
+  font-family: "Titillium Bold";
+  src: url(.././fonts/TitilliumWeb-Bold.ttf);
+}
+
+body {
+  font-family: "Titillium", "san-serif";
+}
+h1,
+h2,
+h3 {
+  font-family: "Titillium Bold" !important;
+}
+
+input,
+button,
+a,
+p,
+select *,
+select {
+  font-family: "Titillium";
+  font-size: 15px;
+}

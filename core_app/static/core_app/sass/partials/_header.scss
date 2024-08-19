@@ -1,0 +1,134 @@
+header {
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+
+  .mobile-menu {
+    position: fixed;
+    min-width: 250px;
+    background: #101436;
+    border-right: 4px solid #1a1f4d;
+    height: 100vh;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
+    top: 0;
+    transform: translateX(-300%);
+    opacity: 0;
+    transition: 0.3s all ease;
+    display: none;
+    z-index: 6000;
+
+    .mobile-menu-header {
+      margin-bottom: 30px;
+
+      .logo-wrapper {
+        display: flex;
+        justify-content: flex-start;
+      }
+      .logo {
+        text-align: left !important;
+        font-size: 30px;
+        color: #fff;
+      }
+
+      h3 {
+        text-transform: uppercase;
+      }
+    }
+
+    ul {
+      width: 100%;
+      text-align: left;
+      list-style: none;
+
+      li a {
+        text-decoration: none;
+        color: #fff;
+        text-transform: uppercase;
+        transition: 0.3s all;
+
+        &:hover {
+          color: #b3b8f7;
+        }
+      }
+    }
+  }
+
+  nav {
+    width: 100%;
+    padding-inline: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+
+      li:not(:last-child) {
+        margin-right: 8px;
+      }
+      li {
+        a {
+          text-transform: uppercase;
+          text-decoration: none;
+          font-size: 14px !important;
+          color: #fff;
+          transition: 0.3s all;
+
+          &:hover {
+            color: #b3b8f7;
+          }
+        }
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #fff !important;
+
+      .logo-icon {
+        font-size: 25px;
+      }
+      p {
+        text-transform: uppercase;
+        margin-left: 6px;
+      }
+    }
+  }
+
+  p {
+    opacity: 0.4;
+  }
+  .logo-section {
+    width: 50px;
+    height: 45px;
+    margin-inline: auto;
+    background: #e0e0e048;
+    border: 1px solid #cfcfcf86;
+    margin-top: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #161b52;
+  }
+}
+.toggle-icon {
+  cursor: pointer;
+}
+.show-menu {
+  transform: translateX(0%) !important;
+  opacity: 1 !important;
+}

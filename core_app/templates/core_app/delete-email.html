@@ -1,0 +1,30 @@
+{% extends 'core_app/index.html' %} {% block main %}
+<div class="container-wrapper">
+  {% include 'core_app/generator-header.html' %}
+  <div class="generator-content-wrapper">
+    <p class="generator-content-wrapper">Manage Your Passwords</p>
+    <p class="generator-password-manage-text">
+      All your saved passwords will be shown here.
+    </p>
+    <!--Delete Wrapper-->
+    <div class="email-action-wrapper">
+      <p class="generator-content-wrapper">
+        Are you sure to delete
+        <span class="lowecase"> -- "{{ data.generated_email_address }}"</span> ?
+      </p>
+      <div class="delete-form">
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn-main btn-success">Delete</button>
+          <a href="{% url 'manage' %}" class="btn-main">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .manage-page {
+    border-bottom: 1px solid #fff !important;
+  }
+</style>
+{% endblock main %}

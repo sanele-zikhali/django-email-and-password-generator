@@ -1,0 +1,70 @@
+<header>
+  <nav>
+    <a href="{% url 'index' %}" class="logo">
+      <i class="fa fa-at logo-icon"></i>
+      <p>Email Generator</p>
+    </a>
+    <ul>
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'email-generator' %}">Generator</a></li>
+      <li>
+        <a href="{% url 'profile' user.profile_id %}"
+          >Hello {{user.username}}</a
+        >
+      </li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+      <li><a href="{% url 'login' %}">Login</a></li>
+      {% endif %}
+    </ul>
+    <div class="toggle-icon" id="toggle-icon">
+      <i class="fa fa-bars"></i>
+    </div>
+  </nav>
+  <h2 class="text-uppercase-text">Email Generator</h2>
+  <p class="text-uppercase">Generate unique emails.</p>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="logo-wrapper">
+        <a href="#" class="logo">
+          <i class="fa fa-at"></i>
+        </a>
+      </div>
+      <h3>Email Generator</h3>
+    </div>
+    <ul>
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'email-generator' %}">Generator</a></li>
+      <li>
+        <a href="{% url 'profile' user.profile_id %}"
+          >Hello {{user.username}}</a
+        >
+      </li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+      <li><a href="{% url 'login' %}">Login</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</header>
+<script>
+  let toggleIcon = document.getElementById("toggle-icon");
+  let menu = document.getElementById("mobile-menu");
+
+  toggleIcon.addEventListener("click", () => {
+    menu.classList.toggle("show-menu");
+  });
+</script>
+<style>
+  .text-uppercase {
+    text-transform: uppercase !important;
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+</style>

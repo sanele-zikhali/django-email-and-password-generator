@@ -1,0 +1,29 @@
+{% extends 'core_app/index.html' %} {% block main %}
+<div class="jumbotron-wrapper">
+  <div class="jumbotron">
+    <h2 class="welcome-text">Welcome to Email Generator</h2>
+    <p class="welcome-subtext">Manage all your emails in one place.</p>
+
+    <div class="social-platforms">
+      <p>Visit Our Social Media</p>
+      <div class="social-platforms-wrapper">
+        <a href="#"
+          ><span class="platform-wrapper"
+            ><i class="fab fa-facebook-f"></i></span
+        ></a>
+        <a href="#"
+          ><span class="platform-wrapper"><i class="fab fa-github"></i></span
+        ></a>
+        <a href="#"
+          ><span class="platform-wrapper"><i class="fab fa-twitter"></i></span
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if not user.is_authenticated %}
+<div class="button-wrapper">
+  <a href="{% url 'register' %}" class="btn-main">Get Started</a>
+</div>
+{% endif %} {% endblock main %}

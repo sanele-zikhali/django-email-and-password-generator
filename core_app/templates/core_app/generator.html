@@ -1,0 +1,117 @@
+{% extends 'core_app/index.html' %} {% block main %}
+<div class="container-wrapper">
+  {% include 'core_app/generator-header.html' %}
+  <div class="generator-content-wrapper">
+    <div class="generator-content-grid">
+      <div class="generator-content-col">
+        <p class="generate-form-title">Generate New Password</p>
+        <form action="{% url 'generate-email' %}" method="post">
+          {% csrf_token %} {% include 'core_app/validation.html' %}
+          <div class="input-group">
+            <select name="platform">
+              <option value="" selected>Select Platform</option>
+              <option value="yahoo">Yahoo</option>
+              <option value="gmail">Google</option>
+              <option value="microsoft">Microsoft</option>
+              <option value="email">Email</option>
+            </select>
+          </div>
+          <!-- Form Grid -->
+          <div class="form-grid">
+            <div>
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="first_name"
+                  value="{{firs_name}}"
+                  placeholder="First Name eg. John"
+                  maxlength="30"
+                  autocomplete="off"
+                />
+                <i class="input-icon fa fa-user"></i>
+              </div>
+            </div>
+            <div>
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="last_name"
+                  value="{{last_name}}"
+                  placeholder="Last Name eg. Doe"
+                  maxlength="30"
+                  autocomplete="off"
+                />
+                <i class="input-icon fa fa-user"></i>
+              </div>
+            </div>
+          </div>
+          <!-- Form Grid Ends -->
+          <button class="custom-btn-main">Generate Password</button>
+        </form>
+      </div>
+      <div class="generator-content-col">
+        <div class="generated-password-container">
+          <p class="password-instruction">
+            Click the "Save" to save or "Regenerate" to generate new email.
+          </p>
+          <div class="email-details">
+            {% if generated_email %}
+            <div class="email-details-wrapper">
+              <p class="email-label">Email</p>
+              <p class="email-value">: <b>{{generated_email}}</b></p>
+            </div>
+            {%endif%} {% if generated_password %}
+            <div class="email-details-wrapper">
+              <p class="email-label">Password</p>
+              <p class="email-value">: <b>{{generated_password}}</b></p>
+            </div>
+            {% else %}
+            <div class="incoming-request">
+              <p>Waiting For <b>Incoming Request</b></p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="flex gap-10 align-items-center">
+          <form action="{% url 'save-data' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="first_name" value="{{firs_name}}" />
+            <input type="hidden" name="last_name" value="{{last_name}}" />
+            <input type="hidden" name="platform" value="{{platform}}" />
+            <input
+              type="hidden"
+              name="generated_email"
+              value="{{generated_email}}"
+            />
+            <input
+              type="hidden"
+              name="generated_password"
+              value="{{generated_password}}"
+            />
+            <button class="custom-btn-main inline-btn">Save</button>
+          </form>
+          <form action="">
+            <button
+              id="reloadBtn"
+              type="button"
+              class="custom-btn-main inline-btn btn-success"
+            >
+              Regererate
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.getElementById("reloadBtn").addEventListener("click", () => {
+    window.location.reload();
+  });
+</script>
+<style>
+  .generate-page {
+    border-bottom: 1px solid #fff !important;
+  }
+</style>
+{% endblock main %}

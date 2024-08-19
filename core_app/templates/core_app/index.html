@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Generator</title>
+    <link rel="stylesheet" href="{% static 'core_app/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'core_app/css/all.min.css' %}" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'core_app/icons/favicon.ico' %}"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    {% include 'core_app/header.html' %}
+    <div class="main-container">{% block main %} {% endblock main %}</div>
+    {% include 'core_app/footer.html' %}
+    <script src="{% static 'core_app/js/all.min.js' %}"></script>
+  </body>
+</html>

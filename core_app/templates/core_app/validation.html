@@ -1,0 +1,11 @@
+<div class="validation">
+  {% for message in messages %}
+  <p class="{{message.tags}}">
+    {% if message.tags == "success__message" %}
+    <i class="fa fa-check-circle validation-icon"></i>
+    {% else %}
+    <i class="fa fa-exclamation-triangle validation-icon"></i>
+    {% endif %} {{message}}
+  </p>
+  {% endfor %}
+</div>

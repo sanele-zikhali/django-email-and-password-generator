@@ -1,0 +1,70 @@
+{% extends 'core_app/index.html' %} {% block main %}
+<div class="container-wrapper">
+  {% include 'core_app/generator-header.html' %}
+  <h1>{{session_manage}}</h1>
+  <div class="generator-content-wrapper">
+    <p class="generator-content-wrapper">Manage Your Passwords</p>
+    <p class="generator-password-manage-text">
+      All your saved passwords will be shown here.
+    </p>
+    <!--Search Table-->
+    {% include 'core_app/validation.html' %}
+    <div class="search-table-wrapper">
+      <form action="{% url 'search' %}">
+        <div class="input-group">
+          <input
+            type="text"
+            name="search_text"
+            placeholder="Search with email"
+            autocomplete="off"
+          />
+          <i class="fa fa-search input-icon"></i>
+        </div>
+        <div class="input-group">
+          <button>Search</button>
+        </div>
+      </form>
+    </div>
+    <!-- Saved Password Table -->
+    <div class="table-container">
+      <table border="1" cellspacing="0" class="passwords-table">
+        <thead>
+          <tr>
+            <th>PLATFORM</th>
+            <th>EMAIL</th>
+            <th>PASSWORD</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if emails.count > 0 %} {% for email in emails %}
+          <tr>
+            <td class="capitalize">{{email.platform}}</td>
+            <td>{{email.generated_email_address}}</td>
+            <td>{{email.generated_password}}</td>
+            <td>
+              <a
+                href="{% url 'remove-email' email.info_id %}"
+                class="table-btn table-danger"
+              >
+                Delete
+                <i class="fa fa-trash-can table-btn-icon"></i
+              ></a>
+            </td>
+          </tr>
+          {% endfor %} {% else %}
+          <tr>
+            <td colspan="4">No data Found</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<style>
+  .manage-page {
+    border-bottom: 1px solid #fff !important;
+  }
+</style>
+{% endblock main %}

@@ -1,0 +1,9 @@
+{% extends 'core_app/index.html' %} {% block main %}
+<div class="profile-wrapper">
+  <p class="profile-welcome-text">Hello <b>{{user.username}},</b></p>
+  <p class="profile-welcome-tagline">
+    We're exited to have you on board, This is your profile.
+  </p>
+  <h1>{{ session}}</h1>
+</div>
+{% endblock main %}

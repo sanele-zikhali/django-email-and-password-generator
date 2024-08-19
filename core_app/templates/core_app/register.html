@@ -1,0 +1,37 @@
+{% extends 'core_app/index.html' %} {% block main %}
+
+<h2 class="form-title">Register</h2>
+<p class="form-subtitle">Please register your account to get started.</p>
+<form action="{% url 'register' %}" method="post" class="form-wrapper">
+  {% include 'core_app/validation.html' %} {% csrf_token %}
+  <div class="input-group">
+    <input
+      name="username"
+      type="text"
+      placeholder="John Doe / johndoe@email.com"
+      value="{{username}}"
+      autocomplete="off"
+      maxlength="9"
+    />
+    <i class="input-icon fa fa-user"></i>
+  </div>
+  <div class="input-group">
+    <input name="password" type="password" placeholder="6 char(s) or more." />
+    <i class="input-icon fa fa-key"></i>
+  </div>
+  <div class="input-group">
+    <input
+      name="confirm_password"
+      type="password"
+      placeholder="Confirm password"
+    />
+    <i class="input-icon fa fa-key"></i>
+  </div>
+  <div class="input-group">
+    <button type="submit">Register</button>
+  </div>
+  <p class="form-link">
+    Already have an account? <a href="{% url 'login' %}">Sign in</a>
+  </p>
+</form>
+{% endblock main %}

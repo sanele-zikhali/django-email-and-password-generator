@@ -1,0 +1,28 @@
+{% extends 'core_app/index.html' %} {% block main %}
+<h2 class="form-title">Sign In</h2>
+<p class="form-subtitle">Please provide your credentials to login.</p>
+<form action="{% url 'login' %}" method="post" class="form-wrapper">
+  {% include 'core_app/validation.html' %} {% csrf_token %}
+  <p></p>
+  <div class="input-group">
+    <input
+      type="text"
+      name="username"
+      value="{{username}}"
+      autocomplete="off"
+      placeholder="John Doe / johndoe@email.com"
+    />
+    <i class="input-icon fa fa-user"></i>
+  </div>
+  <div class="input-group">
+    <input type="password" name="password" placeholder="6 char(s) or more." />
+    <i class="input-icon fa fa-key"></i>
+  </div>
+  <div class="input-group">
+    <button type="submit">Sign In</button>
+  </div>
+  <p class="form-link">
+    Don't have an account? <a href="{% url 'register' %}">Register</a>
+  </p>
+</form>
+{% endblock main %}
